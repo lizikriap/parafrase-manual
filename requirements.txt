@@ -1,0 +1,6 @@
+streamlit
+python-docx
+PyMuPDF
+transformers
+fuzzywuzzy
+python-Levenshtein
