@@ -9,7 +9,7 @@ import os
 
 @st.cache_resource
 def load_paraphraser():
-    return pipeline("text2text-generation", model="Vamsi/T5_Paraphrase_Paws")
+    return pipeline("text2text-generation", model="t5-small")
 
 paraphraser = load_paraphraser()
 
@@ -34,7 +34,7 @@ def detect_similar_paragraphs(paragraphs, turnitin_text, threshold=70):
     return flagged
 
 def academic_paraphrase(text):
-    result = paraphraser(f"paraphrase: {text} </s>", max_length=256, do_sample=True,
+    result = paraphraser(f"paraphrase: {text}", max_length=256, do_sample=True,
                          top_k=120, top_p=0.95, num_return_sequences=1)
     return result[0]['generated_text']
 
